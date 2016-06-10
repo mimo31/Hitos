@@ -62,7 +62,25 @@
 			Tuto budovu zde nechal v roce 1809 postavit Karel Maxmilián Lažanský a poté ji koupil Bohumil Haas a udělal z ní hostinec.
 			Proto také bývá hostinec někdy nazýván Haasenburk. Tradice pohostinství byla od té doby zachována a nyní se zde stále ve stejné
 			budově od roku 2008 nachází Restaurant a hotel Nebozízek.</p>
+			<br />
+			<a href="http://178.248.252.60/~xpetj03/D%C4%9Bjepis-R3.A.html">Centrální stránka</a>
+			<br />
 			<p style="font-size:10;font-style:italic;">Zdroje: http://www.starapraha.cz/pohlednice-praha-mostecka.php?&toperStarEhJUS=1; https://mapy.cz/; http://ramnebornova.blog.idnes.cz/blog.aspx?c=141387</p>
+			<p id="caj-text"></p>
+			<script>
+			setInterval(setCajText, 50);
+			
+			function setCajText() {
+				var array = "ČAJ".split('');
+				for (var i = 0; i < array.length; i++) {
+					var randomIndex = Math.floor(Math.random() * array.length);
+					var temporary = array[i];
+					array[i] = array[randomIndex];
+					array[randomIndex] = temporary;
+				}
+				document.getElementById("caj-text").innerHTML = array.join("");
+			}
+			</script>
 		</div>
 	</div>
 </body>
