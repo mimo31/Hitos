@@ -63,22 +63,69 @@
 			Proto také bývá hostinec někdy nazýván Haasenburk. Tradice pohostinství byla od té doby zachována a nyní se zde stále ve stejné
 			budově od roku 2008 nachází Restaurant a hotel Nebozízek.</p>
 			<br />
+			
+			<h3 class="subtitle">Cesta</h3>
+			<p>Nejdřív jsme jeli na tramvajovou zastávku Pohořelec a z Pohořelce jsme vystoupali na Nebozízek.
+			Fotku na Nebozízku jsme vyfotili bez problému, jelikož jsme rychle našli místo, ze kterého to fotil autor.
+			Potom jsme šli dolů na tramvajovou zastávku Újezd a postupovali jsme ulicí Újezd až k Helichově ulici,
+			kde stálo GJN, které jsme měli vyfotit. S touto fotkou se vyskytly menší problémy,
+			protože jí autor evidentně fotil ze země a nebylo lehké chytnout správný úhel.
+			Potom jsme šli do Karmelitské ulice. Tam s fotkou nebyly žádné problémy.
+			Poslední fotka se udělala na křižovatce ulic Karmelitské a Prokopské.
+			S touto fotkou byly největší potíže, protože ji autor fotil z prostředka silnice,
+			takže jsme museli čekat na vzácnou příležitost, kdy tam nepojedou ani auta, ani tramvaje a rychle to vyfotit.
+			Nakonec se nám to částečně povedlo.</p>
 			<a href="http://178.248.252.60/~xpetj03/D%C4%9Bjepis-R3.A.html">Centrální stránka</a>
 			<br />
 			<p style="font-size:10;font-style:italic;">Zdroje: http://www.starapraha.cz/pohlednice-praha-mostecka.php?&toperStarEhJUS=1; https://mapy.cz/; http://ramnebornova.blog.idnes.cz/blog.aspx?c=141387</p>
-			<p id="caj-text"></p>
+			<p id="magic-text"></p>
 			<script>
-			setInterval(setCajText, 50);
+			setInterval(updateText, 50);
 			
-			function setCajText() {
-				var array = "ČAJ".split('');
+			var text = "FOTOGRAFIE Z ĎEJEPISU :)";
+			var revealedLetters = 0;
+			var cyclesToReveal = 2;
+			var currentCycle = 0;
+			var revealing = true;
+			
+			function updateText() {
+				currentCycle++;
+				if (currentCycle === cyclesToReveal) {
+					currentCycle = 0;
+					if (revealing) {
+						if (revealedLetters === text.length) {
+							revealing = false;
+						}
+						else {
+							revealedLetters++;
+						}
+					}
+					else {
+						if (revealedLetters === 0) {
+							revealing = true;
+						}
+						else {
+							revealedLetters--;
+						}
+					}
+				}
+				recreateText();
+			}
+			
+			function recreateText() {
+				var newText = text.substring(0, revealedLetters) + shuffleText(text.substring(revealedLetters, text.length));
+				document.getElementById("magic-text").innerHTML = newText;
+			}
+			
+			function shuffleText(original) {
+				var array = original.split('');
 				for (var i = 0; i < array.length; i++) {
 					var randomIndex = Math.floor(Math.random() * array.length);
 					var temporary = array[i];
 					array[i] = array[randomIndex];
 					array[randomIndex] = temporary;
 				}
-				document.getElementById("caj-text").innerHTML = array.join("");
+				return array.join("");
 			}
 			</script>
 		</div>
